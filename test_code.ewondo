@@ -1,4 +1,6 @@
 start 
-print (123);
-print (3); 
+for(@a = 2 to 3, 5+6 ) do 
+print (2 );
+done
+
 end
