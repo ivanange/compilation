@@ -10,14 +10,16 @@ TESTFILES=$(TESTSCR)/test.l $(TESTSCR)/test.y
 file = test_code.ewondo
 
 
-all :  test 
+
+
+all :  test app
 
 app: $(FILES)
 	bison -d $(SRC)/app.y
 	flex $(SRC)/app.l
 	cc -o $(BIN)/app.exe app.tab.c lex.yy.c -lfl
 
-test: $(TESTFILES)
+test: test/test.l test/test.y
 	bison -d $(TESTSCR)/test.y
 	flex $(TESTSCR)/test.l
 	cc -o $(BIN)/test.exe test.tab.c lex.yy.c -lfl
