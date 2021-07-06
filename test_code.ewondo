@@ -1,3 +1,5 @@
-start 
-print (123); 
+start
+for(@a=0 to 2,5)do
+@a=2 ;
+done
 end
