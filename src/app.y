@@ -4,25 +4,92 @@
 FILE *yyin;
 %}
 
-/* declare tokens */
-%token NUMBER
-%token ADD SUB MUL DIV ABS
+%token INTEGER
+%token WORD
+%token PO
+%token PF
+%token AOF
+%token AF
 %token EOL
+%token IF
+%token ELSE
+%token DO
+%token WHILE
+%token FOR
+%token START
+%token OPEN
+%token CLOSE
+%token END
+%token PRINT
+%token READ
+%token DONE
+%token TO
+%token THEN
+%token AO
+
+
 %%
-calclist: 
-| calclist exp EOL { printf("= %d\n", $1); }
-;
-exp: factor
-| exp ADD factor { $$ = $1 + $3; }
-| exp SUB factor { $$ = $1 - $3; }
-;
-factor: term 
-| factor MUL term { $$ = $1 * $3; }
-| factor DIV term { $$ = $1 / $3; }
-;
-term: NUMBER
-| ABS term { $$ = $2 >= 0? $2 : - $2; }
-;
+S:
+  program	{printf("\n Réduction S ----> E    Fin!!!\n"); }
+  
+program :
+	START contenu END
+
+contenu :
+	bloc
+	|blocsi
+	|blocwhile
+	|blocfor 
+	
+bloc :
+	instr EOL
+	|instr  EOL contenu 
+	
+	
+instr :
+	WORD '=' E
+	|PRINT E { printf("%s", $1); }
+	|READ E
+	|WORD '=' cond
+	
+blocsi :
+	IF PO cond PF THEN contenu DONE 
+	|IF  PO cond PF THEN contenu ELSE contenu DONE
+	
+	
+	
+blocwhile : 
+	
+	 WHILE PO cond PF DO contenu DONE
+	 
+blocfor :
+	FOR PO instr TO E ',' E PF	DO contenu  DONE  
+	 
+	
+	 
+
+E:
+  E '+' T {printf("\n Réduction E ----> E + T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |E '*' T {printf("\n Réduction E ----> E * T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |E '-' T {printf("\n Réduction E ----> E - T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |E '/' T {printf("\n Réduction E ----> E / T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |T	  {printf("\n Réduction E ----> T        $1=%d\t$$=%d",$1,$$); }
+
+T:
+  T '*' F {printf("\n Réduction T ----> T * F    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |T '+' F {printf("\n Réduction T ----> T + F    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |T '/' F {printf("\n Réduction T ----> T / F    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |T '-' F {printf("\n Réduction T ----> T - F    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ |F       {printf("\n Réduction T ----> F        $1=%d\t$$=%d",$1,$$); }
+ 
+F:
+  INTEGER {printf("\n Réduction F ----> int      $1=%d\t$$=%d",$1,$$); }
+ |PO E PF    {printf("\n Réduction F ----> (E)     $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
+ 
+ 
+ cond:
+     | F'=='F
+
 %%
 main(int argc, char **argv)
 {
