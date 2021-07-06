@@ -88,37 +88,8 @@ F:
  
  
  cond:
-     | F'=='F  {
-			compteurTest++;
-			cmpEgal = ";Teste d'égalité\n";
-			
-			fprintf(yyout,"%s%sjne test%d\npush 1\njmp fintest%d \ntest%d:\npush 0\nfintest%d:\n\n\n",cmpEgal,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
-		      
-		      }
-		      
-     | F'!='F  {
-			compteurTest++;
-			cmpDifferent=";Teste de différence\n";
-			
-			fprintf(yyout,"%s%sjne test%d\npush 0\njmp fintest%d \ntest%d:\npush 1\nfintest%d:\n\n\n",cmpDifferent,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
+     | F'=='F
 
-		      }
-		      
-     | F'<'F   {
-			compteurTest++;
-                       cmpInferieur=";Teste d'infériorité\n";
-			fprintf(yyout,"%s%sjge test%d\npush 1\njmp fintest%d \ntest%d:\npush 0\nfintest%d:\n\n\n",cmpInferieur,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
-		       	      
-		      }
-     | F'>'F   {
-		       compteurTest++;
-		       cmpSuperieur=";Teste de superiorité\n";
-		       		       
-		       fprintf(yyout,"%s%sjg test%d\npush 0\njmp fintest%d \ntest%d:\npush 1\nfintest%d:\n\n\n",cmpSuperieur,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
-		      }
-
-
- 
 %%
 main(int argc, char **argv)
 {
