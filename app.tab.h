@@ -49,13 +49,28 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    NUMBER = 258,
-    ADD = 259,
-    SUB = 260,
-    MUL = 261,
-    DIV = 262,
-    ABS = 263,
-    EOL = 264
+    INTEGER = 258,
+    WORD = 259,
+    PO = 260,
+    PF = 261,
+    AOF = 262,
+    AF = 263,
+    EOL = 264,
+    IF = 265,
+    ELSE = 266,
+    DO = 267,
+    WHILE = 268,
+    FOR = 269,
+    START = 270,
+    OPEN = 271,
+    CLOSE = 272,
+    END = 273,
+    PRINT = 274,
+    READ = 275,
+    DONE = 276,
+    TO = 277,
+    THEN = 278,
+    AO = 279
   };
 #endif
 
