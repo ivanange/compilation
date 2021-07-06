@@ -94,7 +94,7 @@ E:
  |E '*' T {printf("\n Réduction E ----> E * T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
  |E '-' T {printf("\n Réduction E ----> E - T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
  |E '/' T {printf("\n Réduction E ----> E / T    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
- |T	  { printf("\n Réduction E ----> T        $1=%d\t$$=%d",$1,$$); }
+ |T	  {printf("\n Réduction E ----> T        $1=%d\t$$=%d",$1,$$); }
 
 T:
   T '*' F {printf("\n Réduction T ----> T * F    $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
@@ -104,12 +104,13 @@ T:
  |F       {printf("\n Réduction T ----> F        $1=%d\t$$=%d",$1,$$); }
  
 F:
-  INTEGER {printf("\n Réduction F ----> int      $1=%d\t$$=%d",$1,$$);}
- |PO E PF    { $$ = $2; printf("\n Réduction F ----> (E)     $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$);}
+  INTEGER {printf("\n Réduction F ----> int      $1=%d\t$$=%d",$1,$$); }
+ |PO E PF    {printf("\n Réduction F ----> (E)     $1=%d\t $2=%d \t $3=%d \t $$=%d",$1,$2,$3,$$); }
  
  
  cond:
-     | F
+     | F'=='F
+ 
 %%
 
 
