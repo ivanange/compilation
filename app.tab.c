@@ -1475,7 +1475,7 @@ yyreduce:
 
   case 31:
 #line 123 "src/app.y"
-                 {
+                   {
 				compteurTest++;
 				cmpEgal = ";Teste d'égalité\n";
 				fprintf(yyout,"%s%sjne test%d\npush 1\njmp fintest%d \ntest%d:\npush 0\nfintest%d:\n\n\n",cmpEgal,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
@@ -1485,7 +1485,7 @@ yyreduce:
 
   case 32:
 #line 129 "src/app.y"
-                 {
+                   {
 				compteurTest++;
 				cmpDifferent=";Teste de différence\n";
 				fprintf(yyout,"%s%sjne test%d\npush 0\njmp fintest%d \ntest%d:\npush 1\nfintest%d:\n\n\n",cmpDifferent,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
@@ -1495,7 +1495,7 @@ yyreduce:
 
   case 33:
 #line 136 "src/app.y"
-                {
+                  {
 				compteurTest++;
 				cmpInferieur=";Teste d'infériorité\n";
 				fprintf(yyout,"%s%sjge test%d\npush 1\njmp fintest%d \ntest%d:\npush 0\nfintest%d:\n\n\n",cmpInferieur,cmp,compteurTest,compteurTest,compteurTest,compteurTest); 	      
@@ -1505,7 +1505,7 @@ yyreduce:
 
   case 34:
 #line 142 "src/app.y"
-                {
+                  {
 		       compteurTest++;
 		       cmpSuperieur=";Teste de superiorité\n";	       
 		       fprintf(yyout,"%s%sjg test%d\npush 0\njmp fintest%d \ntest%d:\npush 1\nfintest%d:\n\n\n",cmpSuperieur,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
