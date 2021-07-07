@@ -53,30 +53,42 @@ extern int yydebug;
     WORD = 259,
     PO = 260,
     PF = 261,
-    AOF = 262,
-    AF = 263,
-    EOL = 264,
-    IF = 265,
-    ELSE = 266,
-    DO = 267,
+    EOL = 262,
+    IF = 263,
+    ELSE = 264,
+    THEN = 265,
+    DO = 266,
+    DONE = 267,
     WHILE = 268,
     FOR = 269,
-    START = 270,
-    OPEN = 271,
-    CLOSE = 272,
-    END = 273,
-    PRINT = 274,
-    READ = 275,
-    DONE = 276,
-    TO = 277,
-    THEN = 278,
-    AO = 279
+    TO = 270,
+    START = 271,
+    END = 272,
+    PRINT = 273,
+    READ = 274,
+    AOP = 275,
+    GOP = 276,
+    LOP = 277,
+    UMINUS = 278,
+    EQUAL = 279
   };
 #endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 7 "test/test.y"
+
+    int ival;
+#line 13 "test/test.y"
+
+    char *sval;
+
+#line 89 "test.tab.h"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

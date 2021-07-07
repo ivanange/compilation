@@ -1,11 +1,12 @@
 %option noyywrap
 %{
 # include "test.tab.h"
-int yylval;
 %}
 
 entier [0-9]+
-operateur \+|\*|\=|\=\=|\!\=|\<|\>|\-|\/
+operateur_ari \+|-
+operateur_geo \*|\/|%
+operateur_log ==|!=|=!|<|>|<=|>=
 
 bloc \{|\}
 
@@ -16,32 +17,31 @@ ELSE "else"
 variable  @(a|b|c|d) 
 
 %%
-{entier} { yylval=atoi(yytext);return INTEGER;}
-{variable}  {yylval=*yytext; return WORD;}
+{entier} { yylval.ival = atoi(yytext); return INTEGER;}
+{variable}  {yylval.sval = strdup(yytext); return WORD;}
 
-{operateur} {return *yytext;}
-"do" {return DO;}
-"while"  {return WHILE;}
-"for"  {return FOR;}
-"if"  {return IF;}
-"else"  {return ELSE;}
-"\{"  {return AO;}
-"\}"  {return AF;}
+{operateur_ari} {yylval.sval = strdup(yytext); return AOP;}
+{operateur_log} {yylval.sval = strdup(yytext); return LOP;}
+{operateur_geo} {yylval.sval = strdup(yytext); return GOP;}
+"=" {return EQUAL;}
+"-" {return UMINUS;}
+"bo" {return DO;}
+"ntie"  {return WHILE;}
+"asu"  {return FOR;}
+"nge"  {return IF;}
+"së na"  {return ELSE;}
 "\("  {return PO;}
 "\)"  {return PF;}
-"\;"  {return EOL;}
-"start" {return START;}
-"open" {return OPEN;}
-"close" {return CLOSE;}
-"end" {return END;}
-"print" {return PRINT; }
-"read" {return READ;}
-"then" {return THEN;}
-"done" {return DONE;}
-"to" {return TO;}
+"\."  {return EOL;}
+"tari" {return START;}
+"manabo" {return END;}
+"til" {return PRINT; }
+"lang" {return READ;}
+"ndo" {return THEN;}
+"man" {return DONE;}
+"ya" {return TO;}
 [\n\t ]+  {};
 . { printf("parse error (lex) + %s -\n",yytext); }
-
 
 %%
 

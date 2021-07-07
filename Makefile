@@ -5,8 +5,8 @@ TESTSCR = test
 LIB = lib
 OBJ = obj
 BIN = bin
-FILES=$(SRC)/app.l $(SRC)/app.y
-TESTFILES=$(TESTSCR)/test.l $(TESTSCR)/test.y
+FILES=$(SRC)/app.l $(SRC)/app.y utils.h
+TESTFILES=$(TESTSCR)/test.l $(TESTSCR)/test.y utils.h
 file = test_code.ewondo
 
 
@@ -19,7 +19,7 @@ app: $(FILES)
 	flex $(SRC)/app.l
 	cc -o $(BIN)/app.exe app.tab.c lex.yy.c -lfl
 
-test: test/test.l test/test.y
+test: $(TESTFILES)
 	bison -d $(TESTSCR)/test.y
 	flex $(TESTSCR)/test.l
 	cc -o $(BIN)/test.exe test.tab.c lex.yy.c -lfl

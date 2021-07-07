@@ -1,6 +1,8 @@
 %{
 #include <stdio.h>
 # include "app.tab.h"
+#include "utils.h"
+
 FILE *yyin;
 #define nbMax
 int compteurSi = 0, compteurTest = 0, compteurWhile = 0;
@@ -145,7 +147,8 @@ cond:
 		       fprintf(yyout,"%s%sjg test%d\npush 0\njmp fintest%d \ntest%d:\npush 1\nfintest%d:\n\n\n",cmpSuperieur,cmp,compteurTest,compteurTest,compteurTest,compteurTest);
 		    }
 
-; 
+;
+
 %%
 main(int argc, char **argv)
 {
