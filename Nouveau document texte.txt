@@ -1,0 +1,10 @@
+tari
+a = 0;
+lang c;
+ntie(a < 10)
+bo
+  b = a*(c);
+  til b;
+  a = a+1;
+man
+mana
