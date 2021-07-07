@@ -92,47 +92,47 @@ blocfor:
 
 E:
   E LOP L {
-	  printf("E ----> E LOP L \t E=%d\t LOP=:%s \t L=%d \t $$=%d ", $1, $2, $3, $$);
+	  printf("E ----> E LOP L \t E=%d\t LOP=:%s \t L=%d \t $$=%d \n", $1, $2, $3, $$);
 	  lop($2);
 	}
 
   |L {
-	  printf("E ----> L \t L=%d \t $$=%d ", $1, $$);
+	  printf("E ----> L \t L=%d \t $$=%d \n", $1, $$);
 	}
 ;
 
 L:
   L AOP T {
-	  printf("L ----> L AOP T    L=%d\t AOP=:%s \t T=%d \t $$=%d", $1, $2, $3, $$);
+	  printf("L ----> L AOP T    L=%d\t AOP=:%s \t T=%d \t $$=%d \n", $1, $2, $3, $$);
 	  aop($2); 
 	}
 
 
   |T {
-	   printf("L ----> T \t T=%d \t $$=%d", $1, $$); 
+	   printf("L ----> T \t T=%d \t $$=%d \n", $1, $$); 
    }
 ;
 
 T:
    T GOP N {
-	   printf("T ----> T GOP F    T=%d\t GOP=:%s \t F=%d \t $$=%d", $1, $2, $3, $$); 
+	   printf("T ----> T GOP F    T=%d\t GOP=:%s \t F=%d \t $$=%d \n", $1, $2, $3, $$); 
 	   gop($2);
 	}
 
   |N  {
-	printf("T ----> N \t N=%d  \t $$=%d", $1, $$); 
+	printf("T ----> N \t N=%d  \t $$=%d\n", $1, $$); 
    }  
 ;
 
 N:  
 	F {
-		printf("N ----> F \t N=%d  \t $$=%d", $1, $$); 
+		printf("N ----> F \t N=%d  \t $$=%d\n", $1, $$); 
 	}
 ;
 
 F:
   	INTEGER {
-	  printf("F ----> int \t int=%d \t $$=%d ", $1, $$);
+	  printf("F ----> int \t int=%d \t $$=%d\n", $1, $$);
 	  integer($1);
 	}
 

@@ -1400,7 +1400,7 @@ yyreduce:
   case 17:
 #line 94 "test/test.y"
           {
-	  printf("E ----> E LOP L \t E=%d\t LOP=:%s \t L=%d \t $$=%d ", (yyvsp[-2].ival), (yyvsp[-1].sval), (yyvsp[0].ival), (yyval.ival));
+	  printf("E ----> E LOP L \t E=%d\t LOP=:%s \t L=%d \t $$=%d \n", (yyvsp[-2].ival), (yyvsp[-1].sval), (yyvsp[0].ival), (yyval.ival));
 	  lop((yyvsp[-1].sval));
 	}
 #line 1407 "test.tab.c"
@@ -1409,7 +1409,7 @@ yyreduce:
   case 18:
 #line 99 "test/test.y"
      {
-	  printf("E ----> L \t L=%d \t $$=%d ", (yyvsp[0].ival), (yyval.ival));
+	  printf("E ----> L \t L=%d \t $$=%d \n", (yyvsp[0].ival), (yyval.ival));
 	}
 #line 1415 "test.tab.c"
     break;
@@ -1417,7 +1417,7 @@ yyreduce:
   case 19:
 #line 105 "test/test.y"
           {
-	  printf("L ----> L AOP T    L=%d\t AOP=:%s \t T=%d \t $$=%d", (yyvsp[-2].ival), (yyvsp[-1].sval), (yyvsp[0].ival), (yyval.ival));
+	  printf("L ----> L AOP T    L=%d\t AOP=:%s \t T=%d \t $$=%d \n", (yyvsp[-2].ival), (yyvsp[-1].sval), (yyvsp[0].ival), (yyval.ival));
 	  aop((yyvsp[-1].sval)); 
 	}
 #line 1424 "test.tab.c"
@@ -1426,7 +1426,7 @@ yyreduce:
   case 20:
 #line 111 "test/test.y"
      {
-	   printf("L ----> T \t T=%d \t $$=%d", (yyvsp[0].ival), (yyval.ival)); 
+	   printf("L ----> T \t T=%d \t $$=%d \n", (yyvsp[0].ival), (yyval.ival)); 
    }
 #line 1432 "test.tab.c"
     break;
@@ -1434,7 +1434,7 @@ yyreduce:
   case 21:
 #line 117 "test/test.y"
            {
-	   printf("T ----> T GOP F    T=%d\t GOP=:%s \t F=%d \t $$=%d", (yyvsp[-2].ival), (yyvsp[-1].sval), (yyvsp[0].ival), (yyval.ival)); 
+	   printf("T ----> T GOP F    T=%d\t GOP=:%s \t F=%d \t $$=%d \n", (yyvsp[-2].ival), (yyvsp[-1].sval), (yyvsp[0].ival), (yyval.ival)); 
 	   gop((yyvsp[-1].sval));
 	}
 #line 1441 "test.tab.c"
@@ -1443,7 +1443,7 @@ yyreduce:
   case 22:
 #line 122 "test/test.y"
       {
-	printf("T ----> N \t N=%d  \t $$=%d", (yyvsp[0].ival), (yyval.ival)); 
+	printf("T ----> N \t N=%d  \t $$=%d\n", (yyvsp[0].ival), (yyval.ival)); 
    }
 #line 1449 "test.tab.c"
     break;
@@ -1451,7 +1451,7 @@ yyreduce:
   case 23:
 #line 128 "test/test.y"
           {
-		printf("N ----> F \t N=%d  \t $$=%d", (yyvsp[0].ival), (yyval.ival)); 
+		printf("N ----> F \t N=%d  \t $$=%d\n", (yyvsp[0].ival), (yyval.ival)); 
 	}
 #line 1457 "test.tab.c"
     break;
@@ -1459,7 +1459,7 @@ yyreduce:
   case 24:
 #line 134 "test/test.y"
                 {
-	  printf("F ----> int \t int=%d \t $$=%d ", (yyvsp[0].ival), (yyval.ival));
+	  printf("F ----> int \t int=%d \t $$=%d\n", (yyvsp[0].ival), (yyval.ival));
 	  integer((yyvsp[0].ival));
 	}
 #line 1466 "test.tab.c"
